@@ -12,8 +12,44 @@
 
 <body>
   <include src="./views/header.html"></include>
-  <main>
+  <main class="contact container">
+    <h1 class="contact__title">Contacto</h1>
+    <p class="contact__intro">
+      Si tienes dudas, sugerencias o quieres participar en nuestras jornadas, completa el formulario y nos pondremos en
+      contacto.
+    </p>
 
+    <form class="contact__form" action="#" method="post">
+      <div class="contact__group">
+        <label for="name" class="contact__label">Nombre</label>
+        <input type="text" id="name" name="name" class="contact__input" required>
+      </div>
+
+      <div class="contact__group">
+        <label for="surname" class="contact__label">Apellidos</label>
+        <input type="text" id="surname" name="surname" class="contact__input" required>
+      </div>
+
+      <div class="contact__group">
+        <label for="email" class="contact__label">Email</label>
+        <input type="email" id="email" name="email" class="contact__input" required>
+      </div>
+
+      <div class="contact__group">
+        <label for="message" class="contact__label">Mensaje</label>
+        <textarea id="message" name="message" class="contact__textarea" rows="5" required></textarea>
+      </div>
+
+      <button type="button" class="contact__button">Enviar</button>
+    </form>
+    <script>
+      const form = document.querySelector('.contact__form');
+      const button = document.querySelector('.contact__button');
+
+      button.addEventListener('click', () => {
+        form.reset();
+      });
+    </script>
   </main>
   <include src="./views/footer.html"></include>
   <script type="module" src="./assets/scripts/main.js"></script><!-- do not remove this line! -->
