@@ -1,6 +1,12 @@
 @use "../variables";
 @use "sass:map";
 
+@layer bootstrap, reset, base, layout, components, utilities, overrides;
+
+@layer bootstrap {
+   @import "bootstrap/scss/bootstrap";
+}
+
 /* ------------------------------
 Reseteo y general
 --------------------------------- */
@@ -88,60 +94,64 @@ Footer
 /* ------------------------------
 Index
 --------------------------------- */
-.home {
-  display: grid;
-  flex: 1;
-  grid-template-rows: auto 1fr;
-  gap: 1rem;
-  width: 100%;
-  max-width: 980px;
-  padding: 2rem 1rem;
-  margin: 0 auto;
-  container-name: home;
-  container-type: inline-size;
-
-  &__title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: variables.$font-family-serif;
-    font-size: 3.5rem;
-    color: map.get(variables.$theme-colors, "primary");
-    text-align: center;
-  }
-
-  &__grid-items {
+@layer layout {
+  .home {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 0.75rem;
-  }
+    flex: 1;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 980px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    container-name: home;
+    container-type: inline-size;
 
-  &__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    color: map.get(variables.$theme-colors, "light");
-    text-decoration: none;
-    background-color: map.get(variables.$theme-colors, "dark");
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: variables.$font-family-serif;
+      font-size: 3.5rem;
+      color: map.get(variables.$theme-colors, "primary");
+      text-align: center;
+    }
 
-    &:hover {
-      background-color: map.get(variables.$theme-colors, "primary");
+    &__grid-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 0.75rem;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: map.get(variables.$theme-colors, "light");
+      text-decoration: none;
+      background-color: map.get(variables.$theme-colors, "dark");
+
+      &:hover {
+        background-color: map.get(variables.$theme-colors, "primary");
+      }
     }
   }
 }
 
-@container home (max-width: 900px) {
-  .home__grid-items {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+@layer utilities {
+  @container home (max-width: 900px) {
+    .home__grid-items {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
 
-  .home__title {
-    justify-content: center;
-    font-size: 2.5rem;
-    text-align: center;
+    .home__title {
+      justify-content: center;
+      font-size: 2.5rem;
+      text-align: center;
+    }
   }
 }
 
@@ -334,93 +344,97 @@ Article
 /* ------------------------------
 Contact
 --------------------------------- */
-.contact {
-  width: 100%;
-  max-width: 60vi;
-  padding: 2vi 1.5vi;
-  margin: 0 auto;
-  container-name: contact;
-  container-type: inline-size;
+@layer layout {
+  .contact {
+    width: 100%;
+    max-width: 60vi;
+    padding: 2vi 1.5vi;
+    margin: 0 auto;
+    container-name: contact;
+    container-type: inline-size;
 
-  &__title {
-    margin-bottom: 0.5lh;
-    font-family: variables.$font-family-serif;
-    font-size: 1.5lh;
-    color: lab(62.17 37.05 32.32);
-    text-align: center;
-  }
-
-  &__intro {
-    margin-bottom: 0.5lh;
-    font-size: 0.9lh;
-    color: lab(27.88 5.94 -16.47);
-    text-align: center;
-  }
-
-  &__form {
-    display: grid;
-    gap: 1lh;
-    padding: 1.5lh;
-    border-radius: 0.5lh;
-  }
-
-  &__group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3lh;
-  }
-
-  &__label {
-    font-size: 0.8lh;
-    color: lab(27.88 5.94 -16.47);
-  }
-
-  &__textarea {
-    min-height: 6lh;
-    resize: vertical;
-  }
-
-  &__input,
-  &__textarea {
-    padding: 0.6lh;
-    font-size: 0.8lh;
-    color: lab(14.4 7.48 -16.1);
-    outline: none;
-    background-color: lab(94.92 -2.2 9.53);
-    border: 0.15lh solid lab(62.17 37.05 32.32);
-    border-radius: 0.3lh;
-
-    &:focus {
-      border-color: lab(83.99 5.35 35.37);
+    &__title {
+      margin-bottom: 0.5lh;
+      font-family: variables.$font-family-serif;
+      font-size: 1.5lh;
+      color: lab(62.17 37.05 32.32);
+      text-align: center;
     }
-  }
 
-  &__button {
-    padding: 0.6lh 1lh;
-    font-size: 0.9lh;
-    color: lab(94.92 -2.2 9.53);
-    cursor: pointer;
-    background-color: lab(68.63 -21.36 7.07);
-    border: none;
-    border-radius: 0.3lh;
-    transition: background-color 0.3s;
+    &__intro {
+      margin-bottom: 0.5lh;
+      font-size: 0.9lh;
+      color: lab(27.88 5.94 -16.47);
+      text-align: center;
+    }
 
-    &:hover {
-      background-color: lab(83.99 5.35 35.37);
+    &__form {
+      display: grid;
+      gap: 1lh;
+      padding: 1.5lh;
+      border-radius: 0.5lh;
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3lh;
+    }
+
+    &__label {
+      font-size: 0.8lh;
+      color: lab(27.88 5.94 -16.47);
+    }
+
+    &__textarea {
+      min-height: 6lh;
+      resize: vertical;
+    }
+
+    &__input,
+    &__textarea {
+      padding: 0.6lh;
+      font-size: 0.8lh;
+      color: lab(14.4 7.48 -16.1);
+      outline: none;
+      background-color: lab(94.92 -2.2 9.53);
+      border: 0.15lh solid lab(62.17 37.05 32.32);
+      border-radius: 0.3lh;
+
+      &:focus {
+        border-color: lab(83.99 5.35 35.37);
+      }
+    }
+
+    &__button {
+      padding: 0.6lh 1lh;
+      font-size: 0.9lh;
+      color: lab(94.92 -2.2 9.53);
+      cursor: pointer;
+      background-color: lab(68.63 -21.36 7.07);
+      border: none;
+      border-radius: 0.3lh;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lab(83.99 5.35 35.37);
+      }
     }
   }
 }
 
-@container contact (max-width: 50vi) {
-  .contact__form {
-    padding: 1lh;
-  }
+@layer utilities {
+  @container contact (max-width: 50vi) {
+    .contact__form {
+      padding: 1lh;
+    }
 
-  .contact__title {
-    font-size: 1.2lh;
-  }
+    .contact__title {
+      font-size: 1.2lh;
+    }
 
-  .contact__intro {
-    font-size: 0.8lh;
+    .contact__intro {
+      font-size: 0.8lh;
+    }
   }
 }
