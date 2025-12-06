@@ -1,7 +1,7 @@
 @use "../variables";
 @use "sass:map";
 
-@layer bootstrap, reset, base, layout, components, utilities, overrides;
+@layer bootstrap, layout, utilities;
 
 @layer bootstrap {
    @import "bootstrap/scss/bootstrap";
