@@ -97,6 +97,8 @@ Index
   max-width: 980px;
   padding: 2rem 1rem;
   margin: 0 auto;
+  container-type: inline-size;
+  container-name: home;
 
   &__title {
     display: flex;
@@ -130,15 +132,91 @@ Index
   }
 }
 
-@media (max-width: 768px) {
+@container home (max-width: 900px) {
   .home__grid-items {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
   .home__title {
-    justify-content: center;
     font-size: 2.5rem;
     text-align: center;
+    justify-content: center;
+  }
+}
+
+/* ------------------------------
+Participants
+--------------------------------- */
+.participants {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  container-type: inline-size;
+  container-name: participants;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: variables.$font-family-serif;
+    color: map.get(variables.$theme-colors, "primary");
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  &__card {
+    background-color: map.get(variables.$theme-colors, "light");
+    border: 2px solid map.get(variables.$theme-colors, "primary");
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: calc(33.333% - 1rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover {
+      border-color: map.get(variables.$theme-colors, "dark");
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid map.get(variables.$theme-colors, "primary");
+  }
+
+  &__name {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    font-weight: 700;
+    color: map.get(variables.$theme-colors, "dark");
+  }
+
+  &__desc {
+    font-size: 1rem;
+    color: map.get(variables.$theme-colors, "secondary");
+  }
+}
+
+@container participants (max-width: 900px) {
+  .participants__card {
+    width: calc(50% - 1rem);
+  }
+}
+
+@container participants (max-width: 600px) {
+  .participants__card {
+    width: 100%;
   }
 }
