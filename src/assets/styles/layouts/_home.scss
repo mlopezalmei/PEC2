@@ -112,7 +112,7 @@ Index
       align-items: center;
       justify-content: center;
       font-family: variables.$font-family-serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: map.get(variables.$theme-colors, "primary");
       text-align: center;
     }
@@ -149,7 +149,6 @@ Index
 
     .home__title {
       justify-content: center;
-      font-size: 2.5rem;
       text-align: center;
     }
   }
@@ -168,7 +167,7 @@ Participants
   &__title {
     margin-bottom: 2rem;
     font-family: variables.$font-family-serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: map.get(variables.$theme-colors, "primary");
     text-align: center;
   }
@@ -323,10 +322,7 @@ Article
   }
 }
 
-@container article (max-width: 700px) {
-  .article__title {
-    font-size: 2.3rem;
-  }
+@container article (max-width: 900px) {
 
   .article__author {
     font-size: 0.9rem;
@@ -356,7 +352,7 @@ Contact
     &__title {
       margin-bottom: 0.5lh;
       font-family: variables.$font-family-serif;
-      font-size: 1.5lh;
+      font-size: 2lh;
       color: lab(62.17 37.05 32.32);
       text-align: center;
     }
@@ -424,13 +420,9 @@ Contact
 }
 
 @layer utilities {
-  @container contact (max-width: 50vi) {
+  @container contact (max-width: 900px) {
     .contact__form {
       padding: 1lh;
-    }
-
-    .contact__title {
-      font-size: 1.2lh;
     }
 
     .contact__intro {
