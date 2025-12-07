@@ -4,7 +4,7 @@
 @layer bootstrap, layout, utilities;
 
 @layer bootstrap {
-   @import "bootstrap/scss/bootstrap";
+  @import "bootstrap/scss/bootstrap";
 }
 
 /* ------------------------------
@@ -135,6 +135,39 @@ Index
 
       &:hover {
         background-color: map.get(variables.$theme-colors, "primary");
+      }
+    }
+  }
+
+  @supports not (display: grid) {
+    .home {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .home__grid-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .home__item {
+      width: calc(33.333% - 0.75rem);
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      .home__item {
+        width: 100%;
+      }
+
+      .home__title {
+        justify-content: center;
+        text-align: center;
       }
     }
   }
